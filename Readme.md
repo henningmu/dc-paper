@@ -1,8 +1,7 @@
-# Paper Template
+# Requirements for Benchmarking Distributed Databases
 
-A template for all my university papers.
+This is the paper for the mandatory integration seminar at my university.
 
-## Successful Use-cases
-- Project paper (~ 30 pages)
-- Bachelor thesis (~ 80 pages)
-- Seminar paper (~ 15 pages)
+## Template
+The layout is based on my template (following all guidelines of the university):
+[Paper Template Repository](https://github.com/henningmu/paper-template)
