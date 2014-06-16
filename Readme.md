@@ -4,4 +4,5 @@ This is the paper for the mandatory integration seminar "Distributed Computing" 
 
 ## Template
 The layout is based on my template (following all guidelines of the university):
-[Paper Template Repository](https://github.com/henningmu/paper-template)
+
+[Repository of Template](https://github.com/henningmu/paper-template)
