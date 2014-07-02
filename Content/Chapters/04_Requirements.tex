@@ -6,12 +6,35 @@ The previous chapter illuminated existing approaches of benchmarking in general 
 
 The benchmarks defined by the \ac{TPC} have a clear and bold focus on an application driven workload mix inspired by real-world applications. They define minimum percentages for every possible transaction or user request. This can be a good approach when an application is analysed which already has users or a known usage profile which can be used as a prototype for the workload mix. Sometimes benchmarks are conducted to assist in decision making process which technology shall be applied for a new technology. In this case no usage profile is available and it is important to have the ability to define a custom workload. This should be done similar to the YCSB where distributions for specific operations are declared. Distributions in contrast to random values have the big advantage to simulate specific usages for example reading from data hotspots or updating the most current entries in the database.
 
-Additionally to workload mix the measured performance metrics have to be taken into account. The \ac{TPC} measures business transactions and the business throughput hence measuring fully completed user request. Another approach is to measure the throughput as request per seconds. In the context of the distributed an interesting metric to observe is the amount of servers needed to achieve a constant throughput.
+Additionally to the workload mix the measured performance metrics have to be taken into account. The \ac{TPC} measures business transactions and the business throughput hence measuring fully completed user request. Another approach is to measure the throughput as request per seconds.
 
-\begin{itemize}
-  \item when measuring amount of servers the price for the infrastructure could be calculated at every time
-  \item utilization of the servers has to be monitored to explain spikes and reject measurement errors
-  \item easily extendible (without changes of -> generic config file)
-  \item statistic module is optional important is that the data is persisted -> there are enough tools to analyse: SAP Lumira, Excel, R, ...
-  \item adapt Rain by splitting generation from execution to repeat same workload over and over
-\end{itemize}
+In the context of distributed databases another interesting metric to observe is the amount of servers needed to achieve a constant throughput. From this amount the \ac{TCO} of the infrastructure can be estimated. The pay-as-you-go model of most cloud serving databases makes it hard to predict the costs by investigating how many servers are needed for a specific workload mix and a desired throughput.
+
+The benchmark should split the workload generation from the workload execution similar to Rain. This offers great advantages since the same workload can be repeated hence making it easier to compare different benchmark results. When a production infrastructure is benchmarked the workload could be generated in advance and the execution could be done in the night when the load on the system is significantly lower.
+
+Independently from all metrics and other requirements it is essential to monitor the system utilization. This can become a hard task when facing distributed systems which scale dynamically over multiple system. When monitoring a distributed systems it is important to keep in mind that the applications are hosted on multi-tenant system and only the utilization for the own is taken into account and not of the whole machine. Nevertheless the system utilization is crucial to prove whether the measured performance metrics are statistically relevant. Additionally the utilization can be an indicator when there are drops in the throughput when the utilization has a spike, too the problem might not be a problem of the application but a background task of the system which influenced the overall performance.
+
+A benchmark is more than just the measured performance metrics it is about its usage as well. The usage of a benchmark should be as easy possible. It should not be necessary to adopt any code to cover the most generic use cases. Therefore one requirement of the benchmark is to be easily configurable. Using a single configuration file to specify the complete workload mix and measured performance metrics should be enough. To cover more special cases of workloads or exotic systems the benchmark shall declare an interface which can be implemented by anyone. The previously named configuration shall be able to load the implemented changes similar to plugins.
+
+Rain specified an in-built statistic module to analysis the results of the benchmark. This should always be optional. It is more important to save the benchmark results in a persistent storage to make them easily accessible for any third-party application hence it is not disrupting existing work-flows for data analysis. In praxis is it very likely that a team conducting benchmarks already has an infrastructure and guidelines for graphically analyse the measured data. The benchmark shall be flawlessly integrated into these work-flows.
+
+Table~\ref{tab:requirements} summarizes all requirements which shall be met when benchmarking distributed databases. The requirements are split into two main categories: \emph{Measured Metrics} and \emph{Implementation}
+
+\begin{table}[htb]
+  \centering
+  \renewcommand{\arraystretch}{1.5}
+  \caption[Requirements for Benchmarking Distributed Systems]{Requirements for Benchmarking Distributed Systems}
+  \label{tab:requirements}
+  \begin{tabularx}{\textwidth}{lX}
+    \rowcolor{algreen!40}\multicolumn{2}{l}{Experiment Definition} \\
+    1 & Coarse or fine grained definition of workload mix \\
+    2 & Selection of metrics to measure ((business) throughput, availability, etc.) \\
+    3 & Derived metrics from measurement (e.g. \ac{TCO})\\
+    4 & Monitor system utilization \\
+    \rowcolor{algreen!40}\multicolumn{2}{l}{Implementation} \\
+    1 & Separated generation and execution of workload \\
+    2 & Easy to implement interface for extension \\
+    3 & Configurable via a single file (no changes in code) \\
+    4 & Save experiment results in persistent storage \\
+  \end{tabularx}
+\end{table}

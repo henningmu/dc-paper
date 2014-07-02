@@ -35,8 +35,8 @@
 	\pagebreak
 
 	% List of listings
-	\lstlistoflistings
-	\pagebreak
+	% \lstlistoflistings
+	% \pagebreak
 	
 	% List of to-dos
 	\listoftodos
@@ -61,12 +61,13 @@
 	\ihead[\mytitle]{\mytitle}	
 	
 	% Appendix
-	\appendix
-	\input{Content/Chapters/A_Appendix}
+	% \appendix
+	% \input{Content/Chapters/A_Appendix}
 	
 	% Bibliography
-	\printbibliography[title={Literature}]
+	\printbibliography[notkeyword=online, title={Literature}]
 	\clearpage
+	\printbibliography[keyword=online, heading=subbibintoc, title={Online Resources}]	
 	\clearpage
 
 \end{document}
