@@ -9,22 +9,22 @@ The \acf{TPC} defines itself as \enquote{non-profit corporation founded to defin
 
 \subsection{TPC-C}
 \label{subsec:tpc-c}
-The \ac{TPC}-C benachmark defines an \acf{OLTP} workload. Where the transaction is not a database transaction but a so called business transaction. The performance metric the benchmark reports is the \enquote{business throughput} thus the number of successful orders per minute \cite[7]{tpcc.2010}. It is necessary that the \ac{SUT} has full ACID support \cite[47]{tpcc.2010}. That means NoSQL databases configured with eventual consistency are not applicable for the \ac{TPC}-C benchmark. The workload mix consists out of five different business transactions: New-Order, Payment, Order-Status, Delivery and Stock-Level. Where the last three occur with a minimum of $4\;\%$ in the mix and the payment transaction with a minimum of $43\;\%$ \cite[70]{tpcc.2010}.
+The \ac{TPC}-C benchmark defines an \acf{OLTP} workload. Where the transaction is not a database transaction, but a so called business transaction. The performance metric the benchmark reports is the \enquote{business throughput} thus the number of successful orders per minute \cite[7]{tpcc.2010}. It is necessary that the \ac{SUT} has full ACID support \cite[47]{tpcc.2010}. That means NoSQL databases configured with eventual consistency are not applicable for the \ac{TPC}-C benchmark. The workload mix consists out of five different business transactions: New-Order, Payment, Order-Status, Delivery and Stock-Level. Where the last three occur with a minimum of $4\;\%$ in the mix and the payment transaction with a minimum of $43\;\%$ \cite[70]{tpcc.2010}.
 
-Although the \ac{TPC}-C benchmark is not applicable for benchmarking distributed database in consequence of implying full ACID support it is a good example for an application-based workload mix. By defining an application and its usage profile the benchmark could be used as a role-model for a benchmark with focus on a distributed system or more specifically a distributed database.
+Although the \ac{TPC}-C benchmark is not applicable to benchmark distributed databases in consequence of implying full ACID support it is a good example for an application-based workload mix. By defining an application and its usage profile the benchmark could be used as a role-model for a benchmark with a focus on a distributed system or more specifically a distributed database.
 
 \subsection{TPC-DS}
 \label{subsec:tpc-ds}
-The \ac{TPC}-DS benchmark models several aspects of a decision support system. This includes among others the analysis of large volumes of data, the finding of answers to real-world business questions, execution of \acf{OLAP} queries with mixed complexities and the synchronization of data with source \ac{OLTP} databases. The benchmark measures the query throughput and the data maintenance performance of the \ac{SUT}. \cite[7]{tpcds.2012}
+The \ac{TPC}-DS benchmark models several aspects of a decision support system. This includes, among others the analysis of large volumes of data, the finding of answers to real-world business questions, execution of \acf{OLAP} queries with mixed complexities and the synchronization of data with source \ac{OLTP} databases. The benchmark measures the query throughput and the data maintenance performance of the \ac{SUT}. \cite[7]{tpcds.2012}
 
-Equivalent to the \ac{TPC}-C benchmark the \ac{TPC}-DS requires full support of ACID properties for \ac{SUT} \cite[72]{tpcds.2012}. That means it is not applicable to benchmark distributed databases. Nevertheless can it be used to get another insight into an example for an application-based workload mix with a real-world decision support system as role model.
+Equivalent to the \ac{TPC}-C benchmark the \ac{TPC}-DS requires full support of ACID properties from the \ac{SUT} \cite[72]{tpcds.2012}. That means it is not applicable to benchmark distributed databases. Nevertheless, it can be used to get another insight into an example for an application-based workload mix with a real-world decision support system as role model.
 
 \section{Rain}
 \label{sec:rain}
-Beitch et al. developed Rain as workload generation toolkit for cloud computing applications \cite{rain.2010}. Unlike the benchmarks defined by the \ac{TPC} Rain only defines a framework for generating multi-purpose workloads. They define three core aspects which Rain is tackling \cite[1 - 2]{rain.2010}:
+Beitch et al. developed Rain as a workload generation toolkit for cloud computing applications \cite{rain.2010}. Unlike the benchmarks defined by the \ac{TPC} Rain only defines a framework for generating multi-purpose workloads. They define three core aspects which Rain is tackling \cite[1 - 2]{rain.2010}:
 
 \begin{enumerate}
-  \item \textbf{Cost-benefit analysis based load variations}: On the hand the provider has to provide enough systems to not violate the \acf{SLA} on the other hand mean less machines less costs due to better cluster utilization, reduced power consumption etc.
+  \item \textbf{Cost-benefit analysis based load variations}: On the one hand the provider has to provide enough systems to not violate the \acf{SLA} on the other hand mean less machines less costs due to better cluster utilization, reduced power consumption etc.
   \item \textbf{Externally imposed behavioural variations}: Since it is easy to deploy new features to cloud applications the usage behaviour of customers is fluctuating. This results in a quickly evolving and a hard predictable workload.
   \item \textbf{Data popularity and hot spots}: Although there is a highly variable usage pattern data should be accessible as easy and fast as possible based on the application requirements. Some applications may require full ACID support while others can achieve seamless scalability by becoming eventually consistent
 \end{enumerate}
@@ -37,9 +37,9 @@ Additionally Rain uses a different approach from existing workload generators. I
 YCSB is short for \emph{Yahoo! Cloud Serving Benchmark} and was published by Cooper et al. in 2010 \cite{ycsb.2010}. They designed a framework to benchmark cloud applications with the following characteristics \cite[2]{ycsb.2010}:
 
 \begin{itemize}
-  \item \textbf{Scale-out}: Support for huge dataset, high request rates and a balanced load across servers to avoid bottlenecks
+  \item \textbf{Scale-out}: Support for huge data sets, high request rates and a balanced load across servers to avoid bottlenecks
   \item \textbf{Elasticity}: Ability to add servers at runtime to handle spikes in the request rate
   \item \textbf{High Availability}: Automated recovery must be a first-class operation
 \end{itemize}
 
-Additionally to offering a framework for easily benchmarking such system Cooper et al. defined five different core workloads to analyse different aspects of the \ac{SUT}. All core workloads have consists of four different operations namely \texttt{Insert}, \texttt{Update}, \texttt{Read} and \texttt{Scan} which either randomly distributed or follow one the four defined distributions. The distributions defined by Cooper et al. allow to specify data hotspots for the entries in the database. The five predefined workloads are: \emph{Update heavy}, \emph{Read heavy}, \emph{Read only}, \emph{Read latest} and \emph{Scan short ranges}. Nevertheless they made it easy to define own workloads. \cite[4 - 6]{ycsb.2010}
+Additionally to offering a framework for easily benchmarking such systems Cooper et al. defined five different core workloads to analyse different aspects of the \ac{SUT}. All core workloads consist of four different operations, namely \texttt{Insert}, \texttt{Update}, \texttt{Read} and \texttt{Scan} which either are randomly distributed or follow one the four defined distributions. The distributions defined by Cooper et al. allow to specify data hotspots for the entries in the database. The five predefined workloads are: \emph{Update heavy}, \emph{Read heavy}, \emph{Read only}, \emph{Read latest} and \emph{Scan short ranges}. Additionally, they made it easy to define own workloads. \cite[4 - 6]{ycsb.2010}
