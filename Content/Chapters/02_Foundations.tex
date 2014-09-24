@@ -5,7 +5,7 @@
 
 \section{Performance Metrics}
 \label{sec:performance-metrics}
-Certain applications fail to meet specific performance requirements, which results in the damage of customer relations, less productive users, lower revenues or an explosion of maintenance costs \cite{smith.1998}. This chapter specifies how performance is quantified using so called performance metrics.
+Certain applications fail to meet specific performance requirements, which results in the damage of customer relations, less productive users, lower revenues or an explosion of maintenance costs \cite[1]{smith.1998}. This chapter specifies how performance is quantified using so called performance metrics.
 
 Metrics create a uniform understanding of how to interpret the measurements. They make it possible to compare various measurements across different series and systems. Lilja describes the following characteristics of a computer system which should be considered in this context \cite[9]{lilja.2005}:
 
@@ -35,12 +35,13 @@ System utilization is a generic term for all metrics describing the utilization 
 
 \section{Workload Types}
 \label{sec:workloads}
-Schroeder et al. define three different types of workloads: the close, the open and the partly-open workload (cf.~figure~\ref{fig:workload-types}) \cite{Schroeder.2006}. A closed workload assumes that there is a fixed number of users who use the \ac{SUT} forever. The users complete a specified task on the system and wait for a predefined time, the so called think time, and start the task over again \cite[3]{Schroeder.2006}. In contrast in an open system there is a stream of users which complete a task and disappear afterwards. So new requests are not triggered by a previous job completion \cite[3]{Schroeder.2006}. Since neither the closed nor the open workload are very realistic Schroeder et al. came up with the partly-open workload as an alternative. It consists out of a stream of new arriving users (like the open workload) which execute with a defined probability of $\rho$ another task on the \ac{SUT} (like the closed workload) \cite[3 - 4]{Schroeder.2006}.
+Schroeder et al. define three different types of workloads: the close, the open and the partly-open workload (cf.~figure~\ref{fig:workload-types}) \cite{Schroeder.2006}. A closed workload assumes \enquote{that there is some fixed number of users, who use the system forever} \cite[3]{Schroeder.2006}. The users complete a specified task on the system and wait for a predefined time, the so called think time, and start the task over again \cite[3]{Schroeder.2006}. In contrast in an open system \enquote{there is a stream of arriving users} \cite[3]{Schroeder.2006} which complete a task and disappear afterwards \cite[3]{Schroeder.2006}. So
+\enquote{a request completion does not trigger a new request: a new request is only triggered by a new user arrival} \cite[3]{Schroeder.2006}. Schroeder et al. found that \enquote{neither the open system model nor the closed system model is entirely realistic} \cite[3]{Schroeder.2006} and came up with the partly-open workload as an alternative \cite[4]{Schroeder.2006}. It consists out of a stream of new arriving users (like the open workload) which execute with a defined probability of $\rho$ another task on the \ac{SUT} (like the closed workload) \cite[3 - 4]{Schroeder.2006}.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{Figures/workload_types.png}
-  \caption[Workload types]{Workload types}
+  \caption[Workload types]{Workload types \cite[2]{Schroeder.2006}}
   \label{fig:workload-types}
 \end{figure}
 
@@ -50,11 +51,13 @@ It is important to define which kind of workload a benchmark is using to be able
 \label{sec:distributed-computing}
 Distributed computing describes the segmentation of computing power from one processor core on one physical machine to multiple cores on various machines. An outstanding example of the advantages of distributed computing is the rising trend of cloud computing. Users do not have the massive computing power needed to solve today's complex problems in their home or business but rather outsource it in the cloud. By utilizing \acf{PaaS} and \acf{IaaS} they only need a lightweight device to access their data and applications instead of a full fledged computer. \cite[1 - 2]{dikaiakos.2009}
 
-There are three different types of clouds. The first one is the so called \emph{private cloud}, which is hosted by a single organization or group. The second is available to the public (\emph{public cloud}) and the is the \emph{hybrid cloud} which is hosted by multiple organizations or groups. All clouds have in common that they automatically scale up as the loads on the machines increases (\emph{elasticity}). Most of the public clouds have a so called pay-as-you-go economic model where the consumer has only to pay for the computing power it actually uses. \cite[2]{dikaiakos.2009}
+There are three different types of clouds. The first one is the so called \emph{private cloud}, which \enquote{might be restricted to a single organization or group} \cite[2]{dikaiakos.2009}. The \emph{public cloud} is \enquote{available to the general public over the Internet} \cite[2]{dikaiakos.2009}. The third is the \emph{hybrid cloud} which is \enquote{shared by multiple groups or organizations} \cite[2]{dikaiakos.2009}. All clouds have in common that they automatically scale up as the loads on the machines increases (\emph{elasticity}). Most of the public clouds have a so called pay-as-you-go economic model where the consumer has only to pay for the computing power it actually uses. \cite[2]{dikaiakos.2009}
 
 
 \section{NoSQL}
 \label{sec:nosql}
+\acf{NoSQL}
+
 \acf{NoSQL} describes a group of non relation data management systems which in most cases do not use \acf{SQL} as a data manipulation language \cite[1]{moniruzzaman.2013}. \ac{NoSQL} systems are usually distributed databases used to store large-scale data and perform parallel data analysis. They are used when traditional relational databases reach their limit for example when dealing with a huge amount of different entity types. \cite[1 - 2]{moniruzzaman.2013} \cite[23]{orend.2010}
 
 NoSQL databases can be differentiated by their underlying data model. The most widespread data models are categorized as follows \cite[34]{ellis.2010} \cite[2 - 3]{hecht.2011}:
@@ -74,7 +77,7 @@ NoSQL databases can be differentiated by their underlying data model. The most w
     \end{itemize}
   \item Key-Value Stores
     \begin{itemize}
-      \item Memcached \cite{memcached.2014}, Project Voldemort \cite{voldemort.2013}, Redis \cite{redis.2014}, 
+      \item Memcached \cite{memcached.2014}, Project Voldemort \cite{voldemort.2013}, Redis \cite{redis.2014},
     \end{itemize}
 \end{itemize}
 
