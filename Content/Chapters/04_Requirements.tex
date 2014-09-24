@@ -8,7 +8,7 @@ The benchmarks defined by the \ac{TPC} have a clear and bold focus on applicatio
 
 Additionally to the workload mix the measured performance metrics have to be taken into account. The \ac{TPC} measures business transactions and the business throughput hence measuring fully completed user request. Another approach is to measure the throughput as requests per seconds on the database.
 
-In the context of distributed databases, another interesting metric to observe is the amount of servers needed to achieve a constant throughput. From this amount the \ac{TCO} of the infrastructure can be estimated. The pay-as-you-go model of most cloud serving databases makes it hard to predict the costs of investigating how many servers are needed for a specific workload mix and a desired throughput.
+In the context of distributed databases, another interesting metric to observe is the amount of servers needed to achieve a constant throughput. From this amount the \ac{TCO} of the infrastructure can be estimated. The pay-as-you-go model of most cloud serving databases makes it hard to predict the costs of the servers needed for a specific workload mix and a desired throughput.
 
 The benchmark should split the workload generation from the workload execution similar to Rain. This offers great advantages since the same workload can be repeated hence making it easier to compare different benchmark results. When a production infrastructure is benchmarked the workload could be generated in advance and the execution could be done in the night when the load on the system is significantly lower.
 

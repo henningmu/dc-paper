@@ -56,9 +56,7 @@ There are three different types of clouds. The first one is the so called \emph{
 
 \section{NoSQL}
 \label{sec:nosql}
-\acf{NoSQL}
-
-\acf{NoSQL} describes a group of non relation data management systems which in most cases do not use \acf{SQL} as a data manipulation language \cite[1]{moniruzzaman.2013}. \ac{NoSQL} systems are usually distributed databases used to store large-scale data and perform parallel data analysis. They are used when traditional relational databases reach their limit for example when dealing with a huge amount of different entity types. \cite[1 - 2]{moniruzzaman.2013} \cite[23]{orend.2010}
+\acf{NoSQL} datastores \enquote{have been designed to provide good horizontal scalability for simple read / write database operations distributed over many servers} \cite[1]{cattell.2011}. \ac{NoSQL} systems are usually distributed databases used to store large-scale data and perform parallel data analysis. They are used when traditional relational databases reach their limit for example when dealing with a huge amount of different entity types \cite[2 - 3]{orend.2010}.
 
 NoSQL databases can be differentiated by their underlying data model. The most widespread data models are categorized as follows \cite[34]{ellis.2010} \cite[2 - 3]{hecht.2011}:
 
@@ -90,13 +88,13 @@ ACID properties are most of the time ensured by introducing locking-mechanism wh
 
 \subsection{CAP in NoSQL}
 \label{subsec:cap}
-CAP is an acronym for Consistency, Availability and Partition tolerance. Consistency means that every read from the database returns the latest data, which is different from the consistency definition of the ACID properties. Availability ensures that every query on the databases is answered as fast as possible and no query gets lost. This is most of the time achieved by utilizing many physical machines and distribute load between them. Partition tolerance implies that the data saved on a node is duplicated on multiple other nodes making sure that when a node fails to respond to a request the request is forwarded to a node which is able to respond. \cite[72]{pokorny.2011}
+CAP is an acronym for Consistency, Availability and Partition tolerance. Consistency means that every read from the database returns the latest data, this definition \enquote{is different from that one one used in ACID} \cite[72]{pokorny.2011}. Availability ensures that every query on the databases is answered as fast as possible and no query gets lost. This is most of the time achieved by utilizing many physical machines and distributing load between them. Partition tolerance implies that the data saved on a node is duplicated on multiple other nodes making sure that when a node fails to respond to a request the request is forwarded to a node which is able to respond. \cite[72]{pokorny.2011}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=.4\textwidth]{Figures/cap.png}
+  \includegraphics[width=.33\textwidth]{Figures/cap.png}
   \caption[CAP Theorem]{CAP Theorem}
   \label{fig:cap-theorem}
 \end{figure}
 
-The CAP or Brewer's theorem describes that it is impossible to guarantee all the properties at the same time. There will always be a trade-off which has to be evaluated for every use case (cf.~figure~\ref{fig:cap-theorem}). Choosing AP (Availability and Partition tolerance) over CA (Consistency and Availability) does not mean that the database is not consistent at all, but that it does not focus on being strongly consistent to serve incoming requests faster. Most of the NoSQL databases have given up being strongly consistent in order to gain a higher availability and better partition tolerance, this is sometimes called BASE (Basically Available, Soft-state, Eventually consistent) \cite[4]{moniruzzaman.2013}.
+The CAP or Brewer's theorem describes that it is impossible to guarantee all the properties at the same time \cite[72]{pokorny.2011}. There will always be a trade-off which has to be evaluated for every use case (cf.~figure~\ref{fig:cap-theorem}). Choosing AP (Availability and Partition tolerance) over CA (Consistency and Availability) does not mean that the database is not consistent at all, but that it does not focus on being strongly consistent to serve incoming requests faster. \enquote{Many of the NoSQL databases [...] have loosened up the requirements on Consistency in order to achieve better Availability and Partioning. This resulted in systems known as BASE (Basically Available, Soft-state, Eventually consistent)} \cite[4]{moniruzzaman.2013}.
