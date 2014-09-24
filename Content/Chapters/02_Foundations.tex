@@ -81,7 +81,7 @@ NoSQL databases can be differentiated by their underlying data model. The most w
 
 \subsection{ACID Properties in NoSQL}
 \label{subsec:acid}
-Relational databases provide as opposed to \ac{NoSQL} databases full ACID support to ensure that transaction are executed reliably. ACID is an acronym for Atomicity, Consistency, Isolation and Durability. Where atomicity defines that any transaction has to be fully executed or otherwise is reversed. Consistency ensures that each transaction only produces valid data and does not corrupt any table. Isolation implies that no transaction influences another or distorts another's results. Finally, durability describes that no data will be lost when there is a system failure. \cite[71]{pokorny.2011}
+Relational databases provide as opposed to \ac{NoSQL} databases full ACID support to ensure that transactions are executed reliably. ACID is an acronym for Atomicity, Consistency, Isolation and Durability. Where atomicity defines that any transaction has to be fully executed or otherwise is reversed. Consistency ensures that each transaction only produces valid data and does not corrupt any table. Isolation implies that no transaction influences another or distorts another's results. Finally, durability describes that no data will be lost when there is a system failure. \cite[71]{pokorny.2011}
 
 ACID properties are most of the time ensured by introducing locking-mechanism which influence the performance negatively \cite[1]{hecht.2011}. NoSQL databases do not support full ACID properties, hence introducing eventual consistency. The concept behind the trade-off between being strongly consistent and a higher availability and greatly improved scalability is evaluated in the next section.
 
